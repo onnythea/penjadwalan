@@ -51,9 +51,6 @@ Database
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
--- ----------------------------
--- Table structure for ci_sessions
--- ----------------------------
 DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE `ci_sessions`  (
   `id` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -64,9 +61,6 @@ CREATE TABLE `ci_sessions`  (
   INDEX `ci_sessions_timestamp`(`timestamp`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
--- ----------------------------
--- Table structure for dosen
--- ----------------------------
 DROP TABLE IF EXISTS `dosen`;
 CREATE TABLE `dosen`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -77,9 +71,6 @@ CREATE TABLE `dosen`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for hari
--- ----------------------------
 DROP TABLE IF EXISTS `hari`;
 CREATE TABLE `hari`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -87,9 +78,6 @@ CREATE TABLE `hari`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for jadwalkuliah
--- ----------------------------
 DROP TABLE IF EXISTS `jadwalkuliah`;
 CREATE TABLE `jadwalkuliah`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -100,9 +88,6 @@ CREATE TABLE `jadwalkuliah`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 522 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'hasil proses' ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for jadwalkuliah_copy1
--- ----------------------------
 DROP TABLE IF EXISTS `jadwalkuliah_copy1`;
 CREATE TABLE `jadwalkuliah_copy1`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -113,9 +98,6 @@ CREATE TABLE `jadwalkuliah_copy1`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'hasil proses' ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for jam
--- ----------------------------
 DROP TABLE IF EXISTS `jam`;
 CREATE TABLE `jam`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -124,9 +106,6 @@ CREATE TABLE `jam`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for matakuliah
--- ----------------------------
 DROP TABLE IF EXISTS `matakuliah`;
 CREATE TABLE `matakuliah`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -139,9 +118,6 @@ CREATE TABLE `matakuliah`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'example kode_mk = 0765109 ' ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for menu
--- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu`  (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -153,9 +129,17 @@ CREATE TABLE `menu`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for pengampu
--- ----------------------------
+INSERT INTO `menu` VALUES (1, 'orphan', 'Home', '', 'fas fa-home', NULL);
+INSERT INTO `menu` VALUES (2, 'has-sub', 'Master Data', '#', 'fas fa-folder', NULL);
+INSERT INTO `menu` VALUES (3, 'child', 'Dosen', 'web/dosen', 'fas fa-group', 2);
+INSERT INTO `menu` VALUES (4, 'child', 'Mata Kuliah', 'web/matakuliah', 'fas fa-tasks', 2);
+INSERT INTO `menu` VALUES (5, 'child', 'Ruang', 'web/ruang', 'fas fa-desktop', 2);
+INSERT INTO `menu` VALUES (6, 'child', 'Hari', 'web/hari', 'fas fa-calendar-o', 2);
+INSERT INTO `menu` VALUES (7, 'has-sub', 'Plotting Dosen', '#', 'fas fa-table', NULL);
+INSERT INTO `menu` VALUES (8, 'child', 'Day Off Dosen', 'web/dayoff', 'fas fa-ban', 7);
+INSERT INTO `menu` VALUES (9, 'child', 'Plotting Mengajar', 'web/plotting', 'fas fa-calendar-alt', 7);
+INSERT INTO `menu` VALUES (10, 'orphan', 'Penjadwalan', 'web/jadwal', 'fas fa-clock-o', NULL);
+
 DROP TABLE IF EXISTS `pengampu`;
 CREATE TABLE `pengampu`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -166,9 +150,6 @@ CREATE TABLE `pengampu`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 190 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for ruang
--- ----------------------------
 DROP TABLE IF EXISTS `ruang`;
 CREATE TABLE `ruang`  (
   `kode` int NOT NULL AUTO_INCREMENT,
@@ -178,9 +159,6 @@ CREATE TABLE `ruang`  (
   PRIMARY KEY (`kode`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for user
--- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `id` int NULL DEFAULT NULL,
@@ -189,9 +167,6 @@ CREATE TABLE `user`  (
   `level` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Table structure for waktu_tidak_bersedia
--- ----------------------------
 DROP TABLE IF EXISTS `waktu_tidak_bersedia`;
 CREATE TABLE `waktu_tidak_bersedia`  (
   `kode` int NOT NULL AUTO_INCREMENT,
